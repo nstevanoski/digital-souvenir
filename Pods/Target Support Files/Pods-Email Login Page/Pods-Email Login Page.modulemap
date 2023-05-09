@@ -1,6 +1,0 @@
-framework module Pods_Email_Login_Page {
-  umbrella header "Pods-Digital-Souvenir-umbrella.h"
-
-  export *
-  module * { export * }
-}
