@@ -1,0 +1,6 @@
+framework module Pods_Email_Login_Page_Email_Login_PageUITests {
+  umbrella header "Pods-Digital-Souvenir-Digital-SouvenirUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

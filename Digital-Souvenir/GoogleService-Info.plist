@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>986417317448-6fjcaslv3k0g1i5sp89kpa8qu1rg5ogk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.986417317448-6fjcaslv3k0g1i5sp89kpa8qu1rg5ogk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBAQRXsJfSb1TMQMQFQsuDMvfXucAxxo3k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>986417317448</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nstevanoski.DigitalSouvenir</string>
+	<key>PROJECT_ID</key>
+	<string>digital-souvenir-9f0eb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>digital-souvenir-9f0eb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:986417317448:ios:e930ca94f838a7c7503a7d</string>
+</dict>
+</plist>
