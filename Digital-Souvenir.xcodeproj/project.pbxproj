@@ -127,11 +127,9 @@
 		768427A524ECC0DA00F93F0A /* Digital-Souvenir */ = {
 			isa = PBXGroup;
 			children = (
+				BBBF85CA2A0BD7030069EB91 /* Views */,
 				768427A624ECC0DA00F93F0A /* AppDelegate.swift */,
 				768427A824ECC0DA00F93F0A /* SceneDelegate.swift */,
-				768427AA24ECC0DA00F93F0A /* ContentView.swift */,
-				BBAFE0C02A0AB8A100A85D32 /* SignUpView.swift */,
-				BB414CB92A0AB0D900FF15B1 /* ListView.swift */,
 				768427AC24ECC0DE00F93F0A /* Assets.xcassets */,
 				768427B124ECC0DE00F93F0A /* LaunchScreen.storyboard */,
 				768427B424ECC0DE00F93F0A /* Info.plist */,
@@ -157,6 +155,16 @@
 				AA0ADD6EE29976FC4B8A1BC8 /* Pods_Digital_SouvenirTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBBF85CA2A0BD7030069EB91 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				768427AA24ECC0DA00F93F0A /* ContentView.swift */,
+				BBAFE0C02A0AB8A100A85D32 /* SignUpView.swift */,
+				BB414CB92A0AB0D900FF15B1 /* ListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
