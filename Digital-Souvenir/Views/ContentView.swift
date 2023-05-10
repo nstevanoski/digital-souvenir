@@ -20,7 +20,14 @@ struct Home: View {
     var body: some View{
         VStack{
             if self.status{
-                ListView()
+                TabView {
+                    HomeView().tabItem {
+                        Image(systemName: "house.fill")}.tag(0)
+                    SearchView().tabItem {
+                        Image(systemName: "magnifyingglass")}.tag(1)
+                    ProfileView().tabItem {
+                        Image(systemName: "person.fill")}.tag(3)
+                }.accentColor(.black)
             } else {
                 VStack{
                     Login()
