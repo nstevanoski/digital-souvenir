@@ -38,6 +38,7 @@
 		BBBF85F22A0C13C90069EB91 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF85F12A0C13C90069EB91 /* RatingView.swift */; };
 		BBBF85F42A0C13D70069EB91 /* OpinionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF85F32A0C13D70069EB91 /* OpinionCard.swift */; };
 		BBBF85F82A0D5FDD0069EB91 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF85F72A0D5FDD0069EB91 /* LoadingView.swift */; };
+		BBEA8BD52A119C5100159E45 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA8BD42A119C5100159E45 /* CollectionView.swift */; };
 		FCBF2C47DEE5265A1C5F9CA7 /* Pods_Digital_SouvenirTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0ADD6EE29976FC4B8A1BC8 /* Pods_Digital_SouvenirTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		BBBF85F12A0C13C90069EB91 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		BBBF85F32A0C13D70069EB91 /* OpinionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionCard.swift; sourceTree = "<group>"; };
 		BBBF85F72A0D5FDD0069EB91 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		BBEA8BD42A119C5100159E45 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 			children = (
 				BBBF85CF2A0BDBBA0069EB91 /* SearchView.swift */,
 				BB832F762A1147D0009502E6 /* CartView.swift */,
+				BBEA8BD42A119C5100159E45 /* CollectionView.swift */,
 				BBBF85D12A0BDC040069EB91 /* ProfileView.swift */,
 				BBBF85D82A0BE4660069EB91 /* HomeView.swift */,
 			);
@@ -525,6 +528,7 @@
 				BB976B462A1133E400146440 /* OrderViewModel.swift in Sources */,
 				BBBF85DE2A0C0E8F0069EB91 /* Product.swift in Sources */,
 				BBBF85E72A0C0FFD0069EB91 /* ProductCardList.swift in Sources */,
+				BBEA8BD52A119C5100159E45 /* CollectionView.swift in Sources */,
 				BB832F792A114809009502E6 /* PurchaseView.swift in Sources */,
 				BBBF85D22A0BDC040069EB91 /* ProfileView.swift in Sources */,
 				BB976B422A1129DF00146440 /* AuthenticationView.swift in Sources */,

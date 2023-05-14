@@ -9,18 +9,22 @@ struct HomeView: View {
         NavigationView{
             VStack{
                 ScrollView(.vertical){
+//                    VStack(alignment: .leading){
+//                        Text("Gold")
+//                            .font(.system(size:28))
+//                            .multilineTextAlignment(.leading)
+//                            .padding(.leading)
+//                        if(productVM.promotedProducts != nil){
+//                            ProductCarousel(products: productVM.promotedProducts ?? (productVM.products)!)
+//                        }
+//                    }
                     VStack(alignment: .leading){
-                        if(productVM.promotedProducts != nil){
-                            ProductCarousel(products: productVM.promotedProducts ?? (productVM.products)!)
-                        }
-                    }
-                    VStack(alignment: .leading){
-                        Text("More")
+                        Text("Souvenirs")
                             .font(.system(size:28))
                             .multilineTextAlignment(.leading)
                             .padding(.leading)
                         if(productVM.onSaleProducts != nil){
-                            ProductCardList(products: productVM.onSaleProducts!).environmentObject(userVM)
+                            ProductCardList(products: productVM.products!).environmentObject(userVM)
                         }
                     }
                     Spacer(minLength: 40)
@@ -29,6 +33,7 @@ struct HomeView: View {
             .navigationBarTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .background(.black)
 
         .onAppear{
             productVM.getPromotedProducts()
