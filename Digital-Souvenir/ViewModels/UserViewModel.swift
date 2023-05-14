@@ -95,6 +95,7 @@ class UserViewModel: ObservableObject {
             guard document != nil, error == nil else { return }
             do{
                 try self.user = document!.data(as: User.self)
+                print("user",self.user)
             } catch{
                 print("sync error: \(error)")
             }

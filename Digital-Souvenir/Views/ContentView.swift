@@ -6,6 +6,7 @@ struct ContentView: View {
     
     let productVM = ProductViewModel();
     let userVM = UserViewModel();
+    let orderVM = OrderViewModel();
     
     var body: some View {
         VStack{
@@ -16,17 +17,16 @@ struct ContentView: View {
                     SearchView().tabItem {
                         Image(systemName: "magnifyingglass")}.tag(1)
                     ProfileView().tabItem {
-                        Image(systemName: "person.fill")}.tag(3)
+                        Image(systemName: "person.fill")}.tag(3).environmentObject(userVM).environmentObject(orderVM)
                 }.accentColor(.black)
             } else {
                 VStack{
                     AuthenticationView().environmentObject(userVM)
                 }
-                 .onAppear{
-                    NotificationCenter.default.addObserver(forName: NSNotification.Name("status"), object: nil, queue: .main) { (_) in
-                        self.status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
-                    }
-                }
+            }
+        }.onAppear{
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("status"), object: nil, queue: .main) { (_) in
+                self.status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
             }
         }
     }
