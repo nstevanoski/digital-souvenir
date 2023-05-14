@@ -43,6 +43,8 @@ class UserViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.addUser(User(username: username, userEmail: email))
                     self.syncUser()
+                    UserDefaults.standard.set(true, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 }
             }
         }
@@ -55,6 +57,8 @@ class UserViewModel: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     self.syncUser()
+                    UserDefaults.standard.set(true, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 }
             }
         }
@@ -75,6 +79,8 @@ class UserViewModel: ObservableObject {
         do{
             try auth.signOut()
             self.user = nil
+            UserDefaults.standard.set(false, forKey: "status")
+            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
         }
         catch{
             print("Error signing out user: \(error)")
