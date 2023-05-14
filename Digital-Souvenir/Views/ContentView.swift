@@ -14,10 +14,13 @@ struct ContentView: View {
                 TabView {
                     HomeView().tabItem {
                         Image(systemName: "house.fill")}.tag(0).environmentObject(productVM).environmentObject(userVM)
+                    CartView().tabItem {
+                        Image(systemName: "cart.fill")}.tag(2).environmentObject(productVM)
+                            .environmentObject(userVM)
                     SearchView().tabItem {
-                        Image(systemName: "magnifyingglass")}.tag(1)
+                        Image(systemName: "magnifyingglass")}.tag(1).environmentObject(productVM)
                     ProfileView().tabItem {
-                        Image(systemName: "person.fill")}.tag(3).environmentObject(userVM).environmentObject(orderVM)
+                        Image(systemName: "person.fill")}.tag(3).environmentObject(userVM).environmentObject(orderVM).environmentObject(productVM)
                 }.accentColor(.black)
             } else {
                 VStack{

@@ -15,39 +15,15 @@ struct ProductCard: View {
                         .font(.subheadline)
                         .lineLimit(3)
 
-//                    HStack(spacing: 2) {
-//                        //Text("\(product.formatedRating)")
-//                        //Text(product.rating)
-//                            .font(.footnote)
-//                        //Text("(\(product.rating.manualCount))")
-//                        Text("rating countt")
-//                            .font(.caption)
-//                            .offset(y:2)
-//                    }
-
                     Text("\(product.price)€")
                         .bold()
                         .padding(2)
-
-                    Button {
-                        //
-                    } label: {
-                        HStack {
-                            Image(systemName: "cart.badge.plus")
-                            Text("Add to cart")
-                                .font(.caption)
-                                .bold()
-                        }
-                        .padding(8)
-                        .background(Color(red: 192/255, green: 192/255, blue: 192/255))
-                        .cornerRadius(18)
-                    }
-
+                    
                 }
                 .foregroundColor(.black).opacity(1)
                 Spacer()
             }
-            .background(Color(red: 224/255, green: 224/255, blue: 224/255))
+            .background(Color(red: 230/255, green: 230/255, blue: 230/255))
 
         }
         .frame()

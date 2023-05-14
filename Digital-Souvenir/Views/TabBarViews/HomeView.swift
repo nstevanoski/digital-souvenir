@@ -20,7 +20,7 @@ struct HomeView: View {
                             .multilineTextAlignment(.leading)
                             .padding(.leading)
                         if(productVM.onSaleProducts != nil){
-                            ProductCardList(products: productVM.onSaleProducts!)
+                            ProductCardList(products: productVM.onSaleProducts!).environmentObject(userVM)
                         }
                     }
                     Spacer(minLength: 40)
