@@ -1,12 +1,28 @@
 import SwiftUI
 
-enum Categories: String, CaseIterable{
-    case smartphones = "Smartphones"
-    case tablets = "Tablets"
-    case laptops = "Laptops"
-    case headphones = "Headphones"
-    case watches = "Watches"
-    case accesories = "Accesories"
+enum Categories: String, CaseIterable {
+    case afghanistan = "Afghanistan"
+    case albania = "Albania"
+    case algeria = "Algeria"
+    case andorra = "Andorra"
+    case angola = "Angola"
+    case antiguaAndBarbuda = "Antigua and Barbuda"
+    case argentina = "Argentina"
+    case armenia = "Armenia"
+    case australia = "Australia"
+    case austria = "Austria"
+    case azerbaijan = "Azerbaijan"
+    case bahamas = "Bahamas"
+    case bahrain = "Bahrain"
+    case bangladesh = "Bangladesh"
+    case barbados = "Barbados"
+    case belarus = "Belarus"
+    case belgium = "Belgium"
+    case belize = "Belize"
+    case benin = "Benin"
+    case bhutan = "Bhutan"
+    case bolivia = "Bolivia"
+    case bosniaAndHerzegovina = "Bosnia and Herzegovina"
 }
 
 struct SearchView: View {
@@ -129,7 +145,7 @@ struct SearchCell: View{
                         HStack() {
                                Image(systemName: "cart.badge.plus")
                                 .bold().font(.callout)
-                               Text("To shopping cart")
+                               Text("Add to cart")
                                 .bold().font(.footnote)
                            }
 
