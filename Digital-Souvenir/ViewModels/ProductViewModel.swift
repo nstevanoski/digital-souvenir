@@ -271,7 +271,7 @@ class ProductViewModel: ObservableObject {
             "cardHolderLastname": cardHolderLastname,
             "cardCVV": cardCVV,
             "cardExpirationDate": cardExpirationDate,
-            "status": "W przygotowaniu",
+            "status": "In progress",
             "totalPrice": totalPrice
         ]
 
@@ -279,7 +279,7 @@ class ProductViewModel: ObservableObject {
             if let error = error {
                 self.updateAlert(title: "Error", message: error.localizedDescription)
             } else {
-                self.updateAlert(title: "Success", message: "Zamówienie złożone pomyślnie")
+                self.updateAlert(title: "Success", message: "Order placed successfully")
                 for product in productIDs {
                     self.db.collection("Users").document(userID).collection("Cart").document(product).delete()
                 }

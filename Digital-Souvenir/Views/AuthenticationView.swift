@@ -259,7 +259,7 @@ struct ResetPasswordView: View {
                         }
                         
                     }) {
-                        Text("Sign in")
+                        Text("Submit")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding(.vertical)

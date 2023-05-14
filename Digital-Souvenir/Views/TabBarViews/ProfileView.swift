@@ -5,6 +5,7 @@ struct ProfileView: View {
     
     @EnvironmentObject var user: UserViewModel
     @EnvironmentObject var orderVM: OrderViewModel
+    @EnvironmentObject var productVM: ProductViewModel
     
     @State private var showingAlert = false
 
@@ -35,7 +36,7 @@ struct ProfileView: View {
                         ScrollView{
                             List{
                                 Section(header: Text("General")){
-                                    NavigationLink(destination: UserOrdersView(), label: {
+                                    NavigationLink(destination: UserOrdersView().environmentObject(productVM), label: {
                                         Text("Orders")
                                         
                                     })
@@ -258,6 +259,7 @@ struct ChangePasswordView: View{
 struct UserOrdersView: View{
     
     @EnvironmentObject var orderVM: OrderViewModel
+    @EnvironmentObject var productVM: ProductViewModel
     
     var body: some View{
         if self.orderVM.orders != nil{
@@ -265,10 +267,10 @@ struct UserOrdersView: View{
                 Divider()
                 ScrollView{
                     ForEach(0..<self.orderVM.orders!.count, id: \.self){ index in
-                        NavigationLink(destination: DetailedOrderView(order: self.orderVM.orders![index])){
+                        NavigationLink(destination: DetailedOrderView(order: self.orderVM.orders![index]).environmentObject(productVM)){
                             VStack(alignment: .leading){
                                 HStack{
-                                    Text("Order of the day:")
+                                    Text("Order day:")
                                         .foregroundColor(.black)
                                         .opacity(0.75)
                                         .padding(.leading)
@@ -289,8 +291,8 @@ struct UserOrdersView: View{
                                         HStack{
                                             Spacer()
                                             NavigationLink(destination: DetailedOrderView(order: self.orderVM.orders![index])){
-                                                Text("Details of the order")
-                                                    .foregroundColor(.orange)
+                                                Text("Order details")
+                                                    .foregroundColor(.blue)
                                                     .padding(.trailing)
                                             }
                                         }
@@ -312,6 +314,8 @@ struct UserOrdersView: View{
 struct DetailedOrderView: View{
     
     @State var order: Order
+    
+    @EnvironmentObject var productVM: ProductViewModel
     
     var body: some View{
         
@@ -389,7 +393,7 @@ struct DetailedOrderView: View{
             }
             Section(header: Text("Purchased product")){
                 ForEach(0..<order.productIDs.count, id: \.self) { index in
-                    ProductOrderLoader(productID: order.productIDs[index])
+                    ProductOrderLoader(productID: order.productIDs[index]).environmentObject(productVM)
                 }
             }
         }
@@ -424,7 +428,7 @@ struct ProductOrderCell: View{
     var body: some View{
         VStack(alignment: .leading){
             HStack{
-//                ProductSearchCellImage(imageURL: product.imageURL).padding(.leading)
+                ProductSearchCellImage(imageURL: product.imageURL).padding(.leading)
                 Spacer()
                 Text(product.name)
                 Spacer()
