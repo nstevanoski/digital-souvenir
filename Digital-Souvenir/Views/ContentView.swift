@@ -16,6 +16,7 @@ struct ContentView: View {
                         Image(systemName: "house.fill")}.tag(0).environmentObject(productVM).environmentObject(userVM)
                     CartView().tabItem {
                         Image(systemName: "cart.fill")}.tag(2).environmentObject(productVM)
+                            .environmentObject(userVM)
                     SearchView().tabItem {
                         Image(systemName: "magnifyingglass")}.tag(1).environmentObject(productVM)
                     ProfileView().tabItem {

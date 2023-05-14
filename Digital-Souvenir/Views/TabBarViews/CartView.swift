@@ -3,6 +3,7 @@ import SwiftUI
 struct CartView: View {
     
     @EnvironmentObject var productVM: ProductViewModel
+    @EnvironmentObject var userVM: UserViewModel
 
     var body: some View {
         NavigationView {
@@ -14,7 +15,7 @@ struct CartView: View {
                             ForEach(productVM.products!.filter { product in
                                 productVM.userCartProductIDs.contains(product.id)
                             }, id: \.id) { product in
-                                NavigationLink(destination: ProductDetailsView(product: product)) {
+                                NavigationLink(destination: ProductDetailsView(product: product).environmentObject(userVM)) {
                                     ProductCartCell(product: product)
                                 }
                                 
