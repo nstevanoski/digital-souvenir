@@ -47,7 +47,7 @@ struct SearchView: View {
                         }
                     } else {
                         List {
-                            Section(header: Text("Categories")) {
+                            Section(header: Text("Countries")) {
                                 ForEach(Categories.allCases, id: \.rawValue) { item in
                                     NavigationLink(destination: SearchByCategory(category: item.rawValue), label: {
                                         Text(item.rawValue)
