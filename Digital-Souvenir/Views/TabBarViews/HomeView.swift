@@ -8,9 +8,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-//                Color.black
-//                    .edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     // Hero Image
                     Image("hero_image")
