@@ -1,35 +1,33 @@
 import SwiftUI
 
 struct ProductCard: View {
+    let product: Product
     
-    private let screenSize = UIScreen.main.bounds
-
-    var product: Product
-
     var body: some View {
-        ZStack{
-            VStack {
-                ProductCardImage(imageURL: product.imageURL).padding([.top, .bottom])
-                VStack(alignment: .center){
-                    Text(product.name)
-                        .font(.subheadline)
-                        .lineLimit(3)
-
-                    Text("\(product.price)€")
-                        .bold()
-                        .padding(2)
-                    
-                }
-                .foregroundColor(.black).opacity(1)
-                Spacer()
+        VStack(alignment: .leading, spacing: 10) {
+            ProductCardImage(imageURL: product.imageURL)
+                .scaledToFit()
+                .frame(height: 170)
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text(product.name)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .lineLimit(2)
+                    .padding(.horizontal, 10)
+                
+                Text("\(product.price)€")
+                    .font(.subheadline)
+                    .foregroundColor(.black)
+                    .padding(.horizontal, 10)
             }
-            .background(Color(red: 230/255, green: 230/255, blue: 230/255))
-
+            
+            Spacer()
         }
-        .frame()
-        .cornerRadius(20)
-        .shadow(color: Color.black.opacity(0.15), radius: 4, x: 1, y: 2)
-        .padding([.leading, .trailing])
+        .padding(10)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
     }
 }
 

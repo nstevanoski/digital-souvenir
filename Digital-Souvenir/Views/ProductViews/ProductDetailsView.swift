@@ -26,11 +26,10 @@ struct ProductDetailsView: View {
                 ZStack {
                     Rectangle()
                         .fill(Color.white)
-                        .shadow(color: .black.opacity(0.1), radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    VStack(alignment: .center){
+                        .shadow(color: .black.opacity(0.1), radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 0.0)
+                    VStack(alignment: .leading){
                         Text(product.name.uppercased())
-                            .font(.title3).bold()
-                            .multilineTextAlignment(.center)
+                            .font(.title2).bold()
                             .lineLimit(3)
                             .padding()
                         
@@ -40,7 +39,7 @@ struct ProductDetailsView: View {
                                     Text("\(product.price)€")
                                         .font(.callout)
                                         .strikethrough()
-                                        .foregroundColor(.black).opacity(0.75)
+                                        .foregroundColor(.red).opacity(0.75)
                                         .frame(alignment: .trailing)
                                     
                                     Text("\(product.onSalePrice)€")
@@ -56,23 +55,23 @@ struct ProductDetailsView: View {
                                     .padding([.bottom, .leading, .trailing])
                             }
                             
-                            HStack(spacing: 2) {
-                                ForEach(0 ..< Int(self.ratesAvarage), id: \.self){ _ in
-                                    Image(systemName: "star.fill").font(.callout)
-                                }
-                                
-                                if (self.ratesAvarage != floor(self.ratesAvarage)) {
-                                    Image(systemName: "star.leadinghalf.fill").font(.callout)
-                                    
-                                }
-                                ForEach(0 ..< Int(Double(5) - self.ratesAvarage), id: \.self){ _ in
-                                    Image(systemName: "star").font(.callout)
-                                }
-                                Text("(\(self.ratesTotal))").font(.footnote)
-                                    .foregroundColor(.secondary)
-                                    .offset(y: 3)
-                            }
-                            .padding([.bottom, .trailing, .leading])
+//                            HStack(spacing: 2) {
+//                                ForEach(0 ..< Int(self.ratesAvarage), id: \.self){ _ in
+//                                    Image(systemName: "star.fill").font(.callout)
+//                                }
+//
+//                                if (self.ratesAvarage != floor(self.ratesAvarage)) {
+//                                    Image(systemName: "star.leadinghalf.fill").font(.callout)
+//
+//                                }
+//                                ForEach(0 ..< Int(Double(5) - self.ratesAvarage), id: \.self){ _ in
+//                                    Image(systemName: "star").font(.callout)
+//                                }
+//                                Text("(\(self.ratesTotal))").font(.footnote)
+//                                    .foregroundColor(.secondary)
+//                                    .offset(y: 3)
+//                            }
+//                            .padding([.bottom, .trailing, .leading])
                             
                         }
                         HStack{
@@ -133,68 +132,51 @@ struct ProductDetailsView: View {
                             .padding(.horizontal, 8)
                         }
                         
-                        VStack{
-                            HStack{
-                                Text("Reviews")
-                                    .bold()
-                                    .font(.title2)
-                                    .padding(.top)
-                                Text("(\(self.ratesTotal))").font(.callout).offset(y: 10)
-                            }
-                            
-                            if(self.rate != []){
-                                TabView(selection: $currentReviewIndex){
-                                    ForEach(0 ..< self.ratesTotal, id: \.self){ id in
-                                        OpinionCard(rate: self.rate[id], review: self.review[id], username: self.ratedBy[id])
-                                            .tag(id)
-                                    }
-                                }
-                                .frame(height: 200)
-                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                            }
-                            else {
-                                Text("This product has no reviews")
-                            }
-                        }
-                        Button {
-                            
-                            if userVM.userIsAnonymous{
-                                productVM.updateAlert(title: "Attention", message: "You must be logged in to add reviews!")
-
-                            }
-                            else {
-                                showingReviewView = true
-                            }
-                        } label: {
-                            HStack{
-                                Image(systemName: "plus").bold().font(.body)
-                                Text("Add Review").bold().font(.body)
-                            }
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.blue)
-                            .cornerRadius(45)
-                        }
+//                        VStack{
+//                            HStack{
+//                                Text("Reviews")
+//                                    .bold()
+//                                    .font(.title2)
+//                                    .padding(.top)
+//                                Text("(\(self.ratesTotal))").font(.callout).offset(y: 10)
+//                            }
+//
+//                            if(self.rate != []){
+//                                TabView(selection: $currentReviewIndex){
+//                                    ForEach(0 ..< self.ratesTotal, id: \.self){ id in
+//                                        OpinionCard(rate: self.rate[id], review: self.review[id], username: self.ratedBy[id])
+//                                            .tag(id)
+//                                    }
+//                                }
+//                                .frame(height: 200)
+//                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+//                            }
+//                            else {
+//                                Text("This product has no reviews")
+//                            }
+//                        }
+//                        Button {
+//
+//                            if userVM.userIsAnonymous{
+//                                productVM.updateAlert(title: "Attention", message: "You must be logged in to add reviews!")
+//
+//                            }
+//                            else {
+//                                showingReviewView = true
+//                            }
+//                        } label: {
+//                            HStack{
+//                                Image(systemName: "plus").bold().font(.body)
+//                                Text("Add Review").bold().font(.body)
+//                            }
+//                            .padding()
+//                            .foregroundColor(.white)
+//                            .background(Color.blue)
+//                            .cornerRadius(45)
+//                        }
                         Spacer()
                     }
                 }
-                Button {
-                    productVM.addProductToCart(productID: product.id)
-                } label: {
-                    
-                    HStack{
-                        Image(systemName: "cart.badge.plus").bold().font(.body)
-                        Text("Add to cart").bold().font(.body)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(45)
-                    
-                }
-                .padding()
-                .edgesIgnoringSafeArea(.bottom)
             }
         }
         .sheet(isPresented: $showingReviewView){

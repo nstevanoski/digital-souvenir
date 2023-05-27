@@ -8,6 +8,7 @@ target 'Digital-Souvenir' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth' 
   pod 'Firebase/Firestore'
+  pod 'Firebase/Messaging'
   pod 'FirebaseFirestoreSwift'
 
   # Pods for Digital-Souvenir

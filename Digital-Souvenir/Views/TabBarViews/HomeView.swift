@@ -6,52 +6,81 @@ struct HomeView: View {
     @EnvironmentObject var userVM: UserViewModel
 
     var body: some View {
-        NavigationView{
-            VStack{
-                ScrollView(.vertical){
-                    VStack(alignment: .leading){
-                        if(productVM.promotedProducts != nil){
-                            ProductCarousel(products: productVM.promotedProducts ?? (productVM.products)!)
+        NavigationView {
+            ZStack {
+
+                VStack {
+                    // Hero Image
+                    Image("hero_image")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 250)
+                        .clipped()
+                        .overlay(Text("Digital Souvenirs Shop")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .padding(),
+                                 alignment: .bottom)
+                        .padding(.bottom)
+                    
+                    // Products
+                    ScrollView(.vertical) {
+                        VStack(alignment: .leading) {
+                            Text("Souvenirs")
+                                .font(.system(size:28))
+                                .multilineTextAlignment(.leading)
+                                .padding(.leading)
+                            if(productVM.onSaleProducts != nil){
+                                ProductCardList(products: productVM.products!)
+                                    .environmentObject(userVM)
+                            }
                         }
                     }
-                    VStack(alignment: .leading){
-                        Text("More")
-                            .font(.system(size:28))
-                            .multilineTextAlignment(.leading)
-                            .padding(.leading)
-                        if(productVM.onSaleProducts != nil){
-                            ProductCardList(products: productVM.onSaleProducts!).environmentObject(userVM)
-                        }
-                    }
+                    
                     Spacer(minLength: 40)
                 }
+                
+                // Alerts
+                .alert(isPresented: $userVM.showingAlert){
+                    Alert(
+                        title: Text(userVM.alertTitle),
+                        message: Text(userVM.alertMessage),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+                .alert(isPresented: $productVM.showingAlert){
+                    Alert(
+                        title: Text(productVM.alertTitle),
+                        message: Text(productVM.alertMessage),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+                
+                // User profile button
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            // Handle user profile action
+                        }) {
+                            Image(systemName: "person.crop.circle")
+                                .font(.system(size: 50))
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                    }
+                }
             }
-            .navigationBarTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-
-        .onAppear{
-            productVM.getPromotedProducts()
-            productVM.getOnSaleProducts()
-            productVM.getProducts()
-            productVM.getUserWatchList()
-            productVM.getUserCart()
-        }
-        
-        .alert(isPresented: $userVM.showingAlert){
-            Alert(
-                title: Text(userVM.alertTitle),
-                message: Text(userVM.alertMessage),
-                dismissButton: .default(Text("OK"))
-            )
-        }
-        
-        .alert(isPresented: $productVM.showingAlert){
-            Alert(
-                title: Text(productVM.alertTitle),
-                message: Text(productVM.alertMessage),
-                dismissButton: .default(Text("OK"))
-            )
+            .navigationBarHidden(true)
+            .onAppear{
+                productVM.getPromotedProducts()
+                productVM.getOnSaleProducts()
+                productVM.getProducts()
+                productVM.getUserWatchList()
+                productVM.getUserCart()
+            }
         }
     }
 }

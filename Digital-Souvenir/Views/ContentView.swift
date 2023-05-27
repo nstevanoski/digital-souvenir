@@ -13,15 +13,28 @@ struct ContentView: View {
             if self.status{
                 TabView {
                     HomeView().tabItem {
-                        Image(systemName: "house.fill")}.tag(0).environmentObject(productVM).environmentObject(userVM)
+                        Image(systemName: "house.fill")
+                    }.tag(0).environmentObject(productVM).environmentObject(userVM)
                     CartView().tabItem {
-                        Image(systemName: "cart.fill")}.tag(2).environmentObject(productVM)
+                        Image(systemName: "cart.fill")
+                    }.tag(2).environmentObject(productVM)
                             .environmentObject(userVM)
                     SearchView().tabItem {
-                        Image(systemName: "magnifyingglass")}.tag(1).environmentObject(productVM)
+                        Image(systemName: "magnifyingglass")
+                    }.tag(3).environmentObject(productVM)
+                    CollectionView().tabItem {
+                        Image(systemName: "heart")
+                    }.tag(4)
+                        .environmentObject(userVM)
+                        .environmentObject(orderVM)
+                        .environmentObject(productVM)
                     ProfileView().tabItem {
-                        Image(systemName: "person.fill")}.tag(3).environmentObject(userVM).environmentObject(orderVM).environmentObject(productVM)
-                }.accentColor(.black)
+                        Image(systemName: "person.fill")
+                    }.tag(5)
+                        .environmentObject(userVM)
+                        .environmentObject(orderVM)
+                        .environmentObject(productVM)
+                }.accentColor(Color("Dominant"))
             } else {
                 VStack{
                     AuthenticationView().environmentObject(userVM)

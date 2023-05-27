@@ -37,22 +37,20 @@ struct SignInView: View {
     let borderColor = Color(red: 107.0/255.0, green: 164.0/255.0, blue: 252.0/255.0)
     
     var body: some View{
-        VStack(){
-            Image("ds").resizable().frame(width: 350.0, height: 300.0, alignment: .top)
-
+        VStack() {
             Text("Sign in")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.top, 5)
                         
-            TextField("Email",text:self.$email)
+            TextField("Email", text: self.$email)
                 .autocapitalization(.none)
                 .padding()
-                .background(RoundedRectangle(cornerRadius:6).stroke(borderColor,lineWidth:2))
+                .background(RoundedRectangle(cornerRadius: 6).stroke(borderColor, lineWidth: 2))
                 .padding(.top, 5)
             
             HStack(spacing: 15){
-                VStack{
+                VStack {
                     if self.visible {
                         TextField("Password", text: self.$password)
                             .autocapitalization(.none)
@@ -65,7 +63,6 @@ struct SignInView: View {
                 Button(action: {
                     self.visible.toggle()
                 }) {
-                    //Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
                     Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
                         .foregroundColor(self.color)
                         .opacity(0.8)
@@ -73,22 +70,22 @@ struct SignInView: View {
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 6)
-            .stroke(borderColor,lineWidth: 2))
+            .stroke(borderColor, lineWidth: 2))
             .padding(.top, 10)
             
             HStack{
                 Spacer()
                 NavigationLink(destination: ResetPasswordView().environmentObject(user)){
                     Text("Forgot password?")
-                    .foregroundColor(Color("Dominant"))
+                        .foregroundColor(Color("Dominant"))
                 }
             }
             
             // Sign in button
             Button(action: {
-                if (!email.isEmpty && !password.isEmpty){
+                if (!email.isEmpty && !password.isEmpty) {
                     user.signIn(email: email, password: password)
-                } else{
+                } else {
                     user.alertTitle = "Error"
                     user.alertMessage = "All fields are required!"
                     user.showingAlert = true
@@ -98,18 +95,62 @@ struct SignInView: View {
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                     .padding(.vertical)
-                 .frame(width: UIScreen.main.bounds.width - 50)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("Dominant"))
+                    .cornerRadius(6)
             }
-            .background(Color("Dominant"))
-            .cornerRadius(6)
             .padding(.top, 15)
-            .alert(isPresented: $alert){()->Alert in
+            .alert(isPresented: $alert) { () -> Alert in
                 return Alert(title: Text("\(self.title)"), message: Text("\(self.error)"), dismissButton:
                     .default(Text("OK").fontWeight(.semibold)))
             }
             
+            Spacer();
+            
+            // Anonimous sign in
+            Button(action: {
+                user.signInAnonymously()
+            }) {
+                Text("Sign in Anonymously")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black)
+                    .cornerRadius(6)
+            }
+            .padding(.top, 15)
+            
+            // Facebook sign-in button
+            Button(action: {
+                // Handle Facebook sign-in action
+            }) {
+                Text("Sign in with Facebook")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(6)
+            }
+            .padding(.top, 15)
+            
+            // Gmail sign-in button
+            Button(action: {
+                // Handle Gmail sign-in action
+            }) {
+                Text("Sign in with Gmail")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.red)
+                    .cornerRadius(6)
+            }
+            .padding(.top, 10)
+            
             HStack(spacing: 5){
-                Text("Don't have an account ?")
+                Text("Don't have an account?")
                 
                 NavigationLink(destination: SignUpView().environmentObject(user)){
                     Text("Sign up")

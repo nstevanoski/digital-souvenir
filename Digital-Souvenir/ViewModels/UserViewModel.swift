@@ -41,7 +41,7 @@ class UserViewModel: ObservableObject {
                 self.updateAlert(title: "Error", message: error.localizedDescription)
             } else {
                 DispatchQueue.main.async {
-                    self.addUser(User(username: username, userEmail: email))
+                    self.addUser(User(username: username, signUpDate: Date.now, userEmail: email))
                     self.syncUser()
                     UserDefaults.standard.set(true, forKey: "status")
                     NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
@@ -60,6 +60,19 @@ class UserViewModel: ObservableObject {
                     UserDefaults.standard.set(true, forKey: "status")
                     NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 }
+            }
+        }
+    }
+    
+    func signInAnonymously() {
+        auth.signInAnonymously() { authResult, error in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.addUser(User(username: "guest", signUpDate: Date.now, userEmail: "guest"))
+                    self.syncUser()
+                }
+            } else {
+                self.updateAlert(title: "Error", message: error?.localizedDescription ?? "Coś poszło nie tak")
             }
         }
     }
@@ -95,7 +108,6 @@ class UserViewModel: ObservableObject {
             guard document != nil, error == nil else { return }
             do{
                 try self.user = document!.data(as: User.self)
-                print("user",self.user)
             } catch{
                 print("sync error: \(error)")
             }
