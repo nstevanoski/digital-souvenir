@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		768427B024ECC0DE00F93F0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 768427AF24ECC0DE00F93F0A /* Preview Assets.xcassets */; };
 		768427B324ECC0DE00F93F0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 768427B124ECC0DE00F93F0A /* LaunchScreen.storyboard */; };
 		768D17C424ED85D700070053 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 768D17C324ED85D700070053 /* GoogleService-Info.plist */; };
+		BB62759A2A227A570076E42B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = BB6275992A227A570076E42B /* GoogleSignIn */; };
+		BB62759C2A227A570076E42B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB62759B2A227A570076E42B /* GoogleSignInSwift */; };
 		BB832F772A1147D0009502E6 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB832F762A1147D0009502E6 /* CartView.swift */; };
 		BB832F792A114809009502E6 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB832F782A114809009502E6 /* PurchaseView.swift */; };
 		BB976B422A1129DF00146440 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB976B412A1129DF00146440 /* AuthenticationView.swift */; };
@@ -110,7 +112,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB62759C2A227A570076E42B /* GoogleSignInSwift in Frameworks */,
 				6807C7A9248B6C9B8F0ACCBC /* Pods_Digital_Souvenir.framework in Frameworks */,
+				BB62759A2A227A570076E42B /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +292,10 @@
 			dependencies = (
 			);
 			name = "Digital-Souvenir";
+			packageProductDependencies = (
+				BB6275992A227A570076E42B /* GoogleSignIn */,
+				BB62759B2A227A570076E42B /* GoogleSignInSwift */,
+			);
 			productName = "Digital-Souvenir";
 			productReference = 768427A324ECC0DA00F93F0A /* Digital-Souvenir.app */;
 			productType = "com.apple.product-type.application";
@@ -363,6 +371,9 @@
 				Base,
 			);
 			mainGroup = 7684279A24ECC0DA00F93F0A;
+			packageReferences = (
+				BB6275982A227A570076E42B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = 768427A424ECC0DA00F93F0A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -874,6 +885,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB6275982A227A570076E42B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB6275992A227A570076E42B /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB6275982A227A570076E42B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		BB62759B2A227A570076E42B /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB6275982A227A570076E42B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7684279B24ECC0DA00F93F0A /* Project object */;
 }

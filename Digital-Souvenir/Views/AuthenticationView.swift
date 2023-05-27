@@ -107,6 +107,20 @@ struct SignInView: View {
             
             Spacer();
             
+            // Anonimous sign in
+            Button(action: {
+                user.signInAnonymously()
+            }) {
+                Text("Sign in Anonymously")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black)
+                    .cornerRadius(6)
+            }
+            .padding(.top, 15)
+            
             // Facebook sign-in button
             Button(action: {
                 // Handle Facebook sign-in action
