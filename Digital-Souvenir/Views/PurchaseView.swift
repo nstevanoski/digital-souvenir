@@ -6,17 +6,17 @@ struct PurchaseView: View {
     @Environment(\.dismiss) var dismiss
     var productIDs = [String]()
     
-    //personal data
+    // Personal data
     @State private var firstname = ""
     @State private var lastname = ""
     
-    //residence details
+    // Residence details
     @State private var city = ""
     @State private var street = ""
     @State private var streetNumber = ""
     @State private var houseNumber = ""
     
-    //payment details
+    // Payment details
     @State private var cardHolderFirstname = ""
     @State private var cardHolderLastname = ""
     @State private var cardNumber = ""
@@ -29,27 +29,114 @@ struct PurchaseView: View {
     
     var body: some View {
         let borderColor = Color(red: 107.0/255.0, green: 164.0/255.0, blue: 252.0/255.0)
-
+        
         NavigationView {
             if self.productIDs.count > 0 {
-                VStack{
+                VStack {
                     Form {
                         Section(header: Text("Recipient Details")) {
                             TextField("First name", text: $firstname)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("Last name", text: $lastname)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
                         }
+                        
                         Section(header: Text("Address")) {
                             TextField("City", text: $city)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("Street", text: $street)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("Street number", text: $streetNumber)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("House number", text: $houseNumber)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
                         }
+                        
                         Section(header: Text("Payment Details")) {
                             TextField("Cardholder First name", text: $cardHolderFirstname)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("Cardholder Last name", text: $cardHolderLastname)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("Card number", text: $cardNumber)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("Expiration Date", text: $cardExpirationDate)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
+                            
                             TextField("CVV", text: $cardCVV)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(6)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(borderColor, lineWidth: 1)
+                                )
                         }
                     }
                     .textFieldStyle(.roundedBorder)
@@ -58,6 +145,7 @@ struct PurchaseView: View {
                     .scrollContentBackground(.hidden)
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationTitle("Make a purchase")
+                    
                     Spacer()
                     
                     Button {
@@ -66,11 +154,11 @@ struct PurchaseView: View {
                             self.dismiss()
                         } else {
                             productVM.alertTitle = "Error"
-                            productVM.alertMessage = "All fields are requred"
+                            productVM.alertMessage = "All fields are required"
                             productVM.showingAlert = true
                         }
                     } label: {
-                        HStack{
+                        HStack {
                             Image(systemName: "eye").bold().font(.body)
                             Text("Pay").bold().font(.body)
                         }
@@ -82,13 +170,12 @@ struct PurchaseView: View {
                     }
                     .padding([.leading, .trailing, .bottom])
                 }
-            }
-            else{
+            } else {
                 Text("You have no product in your cart.")
                 Spacer()
             }
         }
-        .alert(isPresented: $productVM.showingAlert){
+        .alert(isPresented: $productVM.showingAlert) {
             Alert(
                 title: Text(productVM.alertTitle),
                 message: Text(productVM.alertMessage),
