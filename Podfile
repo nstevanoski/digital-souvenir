@@ -6,7 +6,8 @@ target 'Digital-Souvenir' do
   use_frameworks!
 
   pod 'Firebase/Core'
-  pod 'Firebase/Auth' 
+  pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
   pod 'FirebaseFirestoreSwift'
