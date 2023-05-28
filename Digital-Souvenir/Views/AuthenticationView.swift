@@ -124,6 +124,7 @@ struct SignInView: View {
             // Facebook sign-in button
             Button(action: {
                 // Handle Facebook sign-in action
+                user.signInWithFacebook()
             }) {
                 Text("Sign in with Facebook")
                     .foregroundColor(.white)
@@ -138,6 +139,7 @@ struct SignInView: View {
             // Gmail sign-in button
             Button(action: {
                 // Handle Gmail sign-in action
+                user.signInWithGoogle(from: getRootViewController())
             }) {
                 Text("Sign in with Gmail")
                     .foregroundColor(.white)

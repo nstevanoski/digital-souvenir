@@ -2,6 +2,9 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import Firebase
+import GoogleSignIn
+import FBSDKLoginKit
 
 class UserViewModel: ObservableObject {
     
@@ -64,12 +67,90 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    func signInWithGoogle(from viewController: UIViewController) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { result, error in
+            guard error == nil else {
+                // Handle the error.
+                return
+            }
+
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString
+            else {
+                // Handle the missing user or ID token.
+                return
+            }
+
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+
+            Auth.auth().signIn(with: credential) { (result, error) in
+                if let error = error {
+                    self.updateAlert(title: "Error", message: error.localizedDescription)
+                } else {
+                    if let userEmail = result?.user.email {
+                        self.addUser(User(username: userEmail, signUpDate: Date.now, userEmail: userEmail))
+                    }
+
+                    DispatchQueue.main.async {
+                        self.syncUser()
+                        UserDefaults.standard.set(true, forKey: "status")
+                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func signInWithFacebook() {
+        let loginManager = LoginManager()
+                
+        loginManager.logIn(permissions: ["public_profile", "email"], from: nil) { (result, error) in
+            if let error = error {
+                print("Facebook login failed with error: \(error.localizedDescription)")
+                return
+            }
+                    
+            guard let result = result, !result.isCancelled else {
+                print("Facebook login was canceled.")
+                return
+            }
+                    
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+                    
+            Auth.auth().signIn(with: credential) { (result, error) in
+                if let error = error {
+                    self.updateAlert(title: "Error", message: error.localizedDescription)
+                } else {
+                    if let userEmail = result?.user.email {
+                        self.addUser(User(username: userEmail, signUpDate: Date.now, userEmail: userEmail))
+                    }
+
+                    DispatchQueue.main.async {
+                        self.syncUser()
+                        UserDefaults.standard.set(true, forKey: "status")
+                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    }
+                }
+            }
+        }
+    }
+    
     func signInAnonymously() {
         auth.signInAnonymously() { authResult, error in
             if error == nil {
                 DispatchQueue.main.async {
                     self.addUser(User(username: "guest", signUpDate: Date.now, userEmail: "guest"))
                     self.syncUser()
+                    UserDefaults.standard.set(true, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 }
             } else {
                 self.updateAlert(title: "Error", message: error?.localizedDescription ?? "Coś poszło nie tak")

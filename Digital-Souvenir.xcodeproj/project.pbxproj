@@ -20,6 +20,7 @@
 		BB62759C2A227A570076E42B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB62759B2A227A570076E42B /* GoogleSignInSwift */; };
 		BB832F772A1147D0009502E6 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB832F762A1147D0009502E6 /* CartView.swift */; };
 		BB832F792A114809009502E6 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB832F782A114809009502E6 /* PurchaseView.swift */; };
+		BB84CDEC2A23A0020095FF7C /* +SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84CDEB2A23A0020095FF7C /* +SignInView.swift */; };
 		BB976B422A1129DF00146440 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB976B412A1129DF00146440 /* AuthenticationView.swift */; };
 		BB976B442A1133C600146440 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB976B432A1133C600146440 /* Order.swift */; };
 		BB976B462A1133E400146440 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB976B452A1133E400146440 /* OrderViewModel.swift */; };
@@ -84,6 +85,7 @@
 		AA0ADD6EE29976FC4B8A1BC8 /* Pods_Digital_SouvenirTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Digital_SouvenirTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB832F762A1147D0009502E6 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		BB832F782A114809009502E6 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		BB84CDEB2A23A0020095FF7C /* +SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+SignInView.swift"; sourceTree = "<group>"; };
 		BB976B412A1129DF00146440 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		BB976B432A1133C600146440 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		BB976B452A1133E400146440 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBF85DA2A0C0E270069EB91 /* ProductViewModel.swift */,
+				BB84CDEB2A23A0020095FF7C /* +SignInView.swift */,
 				BBBF85DF2A0C0F0C0069EB91 /* UserViewModel.swift */,
 				BB976B452A1133E400146440 /* OrderViewModel.swift */,
 			);
@@ -534,6 +537,7 @@
 				BBBF85DB2A0C0E270069EB91 /* ProductViewModel.swift in Sources */,
 				BBBF85D02A0BDBBA0069EB91 /* SearchView.swift in Sources */,
 				BBBF85E22A0C0F280069EB91 /* User.swift in Sources */,
+				BB84CDEC2A23A0020095FF7C /* +SignInView.swift in Sources */,
 				BBBF85F02A0C11690069EB91 /* ProductCarouselCard.swift in Sources */,
 				BBBF85EE2A0C111F0069EB91 /* ImageLoader.swift in Sources */,
 				BB976B462A1133E400146440 /* OrderViewModel.swift in Sources */,
