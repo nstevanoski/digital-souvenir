@@ -174,6 +174,7 @@ struct SignUpView: View {
     @State var username = ""
     
     @EnvironmentObject var user: UserViewModel
+    private let manager =  DatabaseManager()
 
     @State var isSecured: Bool = true
     @State var isSecuredConfirmation: Bool = true
@@ -257,6 +258,12 @@ struct SignUpView: View {
                         }
 
                         user.signUp(email: email, password: password, username: username)
+                        let context = (UIApplication.shared.delegate as!AppDelegate).persistentContainer.viewContext
+                        let userEntity = UserEntity(context: context)
+                        
+                        let newUser = User(username: username, signUpDate: Date(), userEmail: email)
+
+                        manager.addUser(newUser)
                     }) {
                         Text("Sign up")
                             .foregroundColor(.white)

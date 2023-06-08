@@ -38,7 +38,6 @@ struct ProfileView: View {
                                 Section(header: Text("General")){
                                     NavigationLink(destination: UserOrdersView().environmentObject(productVM), label: {
                                         Text("Orders")
-                                        
                                     })
                                 }
                             }
@@ -55,12 +54,16 @@ struct ProfileView: View {
                                     NavigationLink(destination: AboutAppView(), label: {
                                         Text("Application Information")
                                     })
+                                    NavigationLink(destination: UsersList(), label: {
+                                        Text("Users")
+                                    })
+
                                 }
                             }
                             .listStyle(.grouped)
                             .scrollDisabled(true)
                             .scrollContentBackground(.hidden)
-                            .frame(height:150)
+                            .frame(height:170)
                             
                             if(!user.userIsAnonymous){
                                 List{
@@ -531,3 +534,22 @@ struct GroupBoxRowView: View{
         }
     }
 }
+
+struct UsersList: View {
+    @State private var users: [UserEntity] = []
+    let manager = DatabaseManager()
+    
+    var body: some View {
+        List(users, id: \.id) { user in
+            if let username = user.username {
+                Text(username)
+            }
+        }
+        .onAppear {
+            users = manager.fetchUsers()
+        }
+    }
+}
+
+
+

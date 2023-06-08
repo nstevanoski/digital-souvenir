@@ -41,6 +41,8 @@
 		BBBF85F22A0C13C90069EB91 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF85F12A0C13C90069EB91 /* RatingView.swift */; };
 		BBBF85F42A0C13D70069EB91 /* OpinionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF85F32A0C13D70069EB91 /* OpinionCard.swift */; };
 		BBBF85F82A0D5FDD0069EB91 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF85F72A0D5FDD0069EB91 /* LoadingView.swift */; };
+		BBD80C5E2A314CCD00B7AD8A /* UserCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD80C5C2A314CCD00B7AD8A /* UserCoreData.xcdatamodeld */; };
+		BBD80C632A31506800B7AD8A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD80C622A31506800B7AD8A /* DatabaseManager.swift */; };
 		BBEA8BD52A119C5100159E45 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA8BD42A119C5100159E45 /* CollectionView.swift */; };
 		FCBF2C47DEE5265A1C5F9CA7 /* Pods_Digital_SouvenirTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0ADD6EE29976FC4B8A1BC8 /* Pods_Digital_SouvenirTests.framework */; };
 /* End PBXBuildFile section */
@@ -106,6 +108,8 @@
 		BBBF85F12A0C13C90069EB91 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		BBBF85F32A0C13D70069EB91 /* OpinionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpinionCard.swift; sourceTree = "<group>"; };
 		BBBF85F72A0D5FDD0069EB91 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		BBD80C5D2A314CCD00B7AD8A /* UserCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCoreData.xcdatamodel; sourceTree = "<group>"; };
+		BBD80C622A31506800B7AD8A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		BBEA8BD42A119C5100159E45 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +179,7 @@
 		768427A524ECC0DA00F93F0A /* Digital-Souvenir */ = {
 			isa = PBXGroup;
 			children = (
+				BBD80C5F2A314D1D00B7AD8A /* Database */,
 				BBBF85EC2A0C11130069EB91 /* Extensions */,
 				BBBF85DC2A0C0E7E0069EB91 /* Models */,
 				BBBF85D32A0BDC380069EB91 /* ViewModels */,
@@ -275,6 +280,15 @@
 				BBBF85ED2A0C111F0069EB91 /* ImageLoader.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BBD80C5F2A314D1D00B7AD8A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				BBD80C5C2A314CCD00B7AD8A /* UserCoreData.xcdatamodeld */,
+				BBD80C622A31506800B7AD8A /* DatabaseManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,6 +545,8 @@
 				BBBF85F82A0D5FDD0069EB91 /* LoadingView.swift in Sources */,
 				BBBF85D72A0BE0F90069EB91 /* FirebaseManager.swift in Sources */,
 				BB832F772A1147D0009502E6 /* CartView.swift in Sources */,
+				BBD80C5E2A314CCD00B7AD8A /* UserCoreData.xcdatamodeld in Sources */,
+				BBD80C632A31506800B7AD8A /* DatabaseManager.swift in Sources */,
 				BBBF85F42A0C13D70069EB91 /* OpinionCard.swift in Sources */,
 				BBBF85E52A0C0FE90069EB91 /* ProductCarousel.swift in Sources */,
 				BBBF85EB2A0C10F80069EB91 /* ProductCard.swift in Sources */,
@@ -913,6 +929,19 @@
 			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BBD80C5C2A314CCD00B7AD8A /* UserCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BBD80C5D2A314CCD00B7AD8A /* UserCoreData.xcdatamodel */,
+			);
+			currentVersion = BBD80C5D2A314CCD00B7AD8A /* UserCoreData.xcdatamodel */;
+			path = UserCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7684279B24ECC0DA00F93F0A /* Project object */;
 }
