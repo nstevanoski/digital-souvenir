@@ -8,13 +8,12 @@ class DatabaseManager {
     }
 
     func addUser(_ user: User) {
-        let userEntity = UserEntity(context: context) // User create karta the
+        let userEntity = UserEntity(context: context)
         addUpdateUser(userEntity: userEntity, user: user)
     }
 
     func updateUser(user: User, userEntity: UserEntity) {
         addUpdateUser(userEntity: userEntity, user: user)
-        // Database mai reflect karne ke liye - IMP
     }
 
     private func addUpdateUser(userEntity: UserEntity, user: User) {
